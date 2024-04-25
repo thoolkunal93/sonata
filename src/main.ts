@@ -2,6 +2,9 @@
 
 import { factory } from "./factory";
 
+/**
+ * Setting dom values into variables
+ */
 const error = document.getElementById("error");
 
 const start_at_control = document.getElementById("start_at");
@@ -12,7 +15,9 @@ const count_button = document.querySelector(".count_button");
 
 const current_count = document.querySelector(".current_count");
 
-
+/**
+ * Adding event lisners
+ */
 start_at_control.addEventListener("change", () => {
   update_count_and_reset_counter();
 });
@@ -23,6 +28,9 @@ step_control.addEventListener("change", () => {
 
 count_button.addEventListener("click", update_count);
 
+/**
+ * Funtion for reseting counters when start or step is changed
+ */
 function update_count_and_reset_counter() {
   let start = parseInt(start_at_control.value);
   let end   = parseInt(step_control.value);
@@ -42,8 +50,10 @@ function update_count_and_reset_counter() {
  * update_count for button click
  */
 function update_count() {
-  const count = factory(parseInt(current_count.innerHTML),  parseInt(step_control.value));
-  current_count.innerHTML = count();
+  current_count.innerHTML = factory(
+    parseInt(current_count.innerHTML),
+    parseInt(step_control.value)
+  )();
 }
 
 //Calling for page load
